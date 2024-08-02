@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { Route, Routes, Navigate } from "react-router-dom";
 import "./App.css";
-import RecipeCard from "./components/RecipeCard";
+import RecipeList from "./components/RecipeList";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
@@ -24,16 +25,10 @@ function App() {
 
   return (
     <>
-      <div id="recipes">
-        {recipes.map((recipe) => (
-          <RecipeCard
-            key={recipe.id}
-            title={recipe.title}
-            image={recipe.image}
-            degrees={Math.floor(Math.random() * 11) - 5}
-          />
-        ))}
-      </div>
+      <Routes>
+        <Route path="/" element={<Navigate to="/recipes" />} />
+        <Route path="/recipes" element={<RecipeList recipes={recipes} />} />
+      </Routes>
     </>
   );
 }
