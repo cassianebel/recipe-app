@@ -1,7 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
+import RecipeCard from "./components/RecipeCard";
 
 function App() {
+  const [recipes, setRecipes] = useState([]);
   const apiKey = import.meta.env.VITE_API_KEY;
 
   async function fetchData() {
@@ -10,35 +12,10 @@ function App() {
         `https://api.spoonacular.com/recipes/complexSearch?diet=vegan&apiKey=${apiKey}`
       );
       const data = await response.json();
-      console.log(data);
-      displayRecipes(data.results);
+      setRecipes(data.results);
     } catch (error) {
       console.error(error);
     }
-  }
-
-  function displayRecipes(recipes) {
-    const recipesDiv = document.getElementById("recipes");
-    recipesDiv.innerHTML = "";
-
-    recipes.forEach((recipe) => {
-      const recipeDiv = document.createElement("div");
-      recipeDiv.classList.add("recipe");
-
-      const image = document.createElement("img");
-      image.src = recipe.image;
-      recipeDiv.appendChild(image);
-
-      const title = document.createElement("h2");
-      title.textContent = recipe.title;
-      recipeDiv.appendChild(title);
-
-      recipesDiv.appendChild(recipeDiv);
-
-      let degrees = Math.floor(Math.random() * 11) - 5;
-      if (degrees === 0) degrees = 1;
-      recipeDiv.style.transform = `rotate(${degrees}deg)`;
-    });
   }
 
   useEffect(() => {
@@ -47,7 +24,16 @@ function App() {
 
   return (
     <>
-      <div id="recipes"></div>
+      <div id="recipes">
+        {recipes.map((recipe) => (
+          <RecipeCard
+            key={recipe.id}
+            title={recipe.title}
+            image={recipe.image}
+            degrees={Math.floor(Math.random() * 11) - 5}
+          />
+        ))}
+      </div>
     </>
   );
 }
