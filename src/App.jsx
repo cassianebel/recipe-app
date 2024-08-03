@@ -17,7 +17,7 @@ function App() {
 
     try {
       const response = await fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?diet=vegan&apiKey=${apiKey}&offset=${offset}`
+        `https://api.spoonacular.com/recipes/complexSearch?diet=vegan&apiKey=${apiKey}&offset=${offset}`,
       );
       const data = await response.json();
       if (data.results && data.results.length > 0) {
@@ -25,12 +25,16 @@ function App() {
         setRecipes((prevRecipes) => {
           const newRecipes = data.results.filter(
             (newRecipe) =>
-              !prevRecipes.some((prevRecipe) => prevRecipe.id === newRecipe.id)
+              !prevRecipes.some((prevRecipe) => prevRecipe.id === newRecipe.id),
           );
           return [...prevRecipes, ...newRecipes];
         });
       } else {
-        setError("No more recipes found.");
+        if (offset === 0) {
+          setError("No recipes found.");
+        } else {
+          setError("No more recipes found.");
+        }
       }
     } catch (err) {
       setError("Failed to fetch recipes");
@@ -50,22 +54,24 @@ function App() {
 
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Navigate to="/recipes" />} />
-        <Route
-          path="/recipes"
-          element={
-            <RecipeList
-              recipes={recipes}
-              fetchRecipes={fetchRecipes}
-              loading={loading}
-              handleNextPage={handleNextPage}
-              error={error}
-            />
-          }
-        />
-        <Route path="/recipes/:id" element={<RecipeDetail />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<Navigate to="/recipes" />} />
+          <Route
+            path="/recipes"
+            element={
+              <RecipeList
+                recipes={recipes}
+                fetchRecipes={fetchRecipes}
+                loading={loading}
+                handleNextPage={handleNextPage}
+                error={error}
+              />
+            }
+          />
+          <Route path="/recipes/:id" element={<RecipeDetail />} />
+        </Routes>
+      </main>
     </>
   );
 }
