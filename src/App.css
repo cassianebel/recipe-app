@@ -2,11 +2,18 @@ body {
   padding: 0;
   margin: 0;
   background-color: #f1f1f1;
+  font-family: "Barlow Condensed", Arial, Helvetica, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1.5rem;
+}
+b {
+  font-weight: 500;
 }
 img {
   border-radius: 4px;
 }
-h2 {
+.recipe h2 {
   font-family: "Shadows Into Light", "Comic Sans MS", Arial, Helvetica,
     sans-serif;
   font-style: normal;
@@ -18,6 +25,10 @@ h2 {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(312px, 1fr));
   margin: 0 auto;
+}
+#recipes a {
+  text-decoration: none;
+  color: #000;
 }
 .recipe {
   max-width: 312px;
@@ -43,4 +54,19 @@ h2 {
   text-align: center;
   cursor: pointer;
   transition: 0.3s;
+}
+.recipe-page img {
+  max-width: 100%;
+}
+.recipe-page h1 {
+  font-family: "Shadows Into Light", "Comic Sans MS", Arial, Helvetica,
+    sans-serif;
+  font-style: normal;
+  margin: 20px;
+  text-align: center;
+}
+.recipe-page h2 {
+  font-family: "Shadows Into Light", "Comic Sans MS", Arial, Helvetica,
+    sans-serif;
+  font-style: normal;
 }

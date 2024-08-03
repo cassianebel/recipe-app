@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import "./App.css";
 import RecipeList from "./components/RecipeList";
+import RecipeDetail from "./components/RecipeDetail";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
@@ -63,6 +64,7 @@ function App() {
             />
           }
         />
+        <Route path="/recipes/:id" element={<RecipeDetail />} />
       </Routes>
     </>
   );

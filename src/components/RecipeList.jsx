@@ -9,6 +9,7 @@ const RecipeList = ({ recipes, handleNextPage, loading, error }) => {
         {recipes.map((recipe) => (
           <RecipeCard
             key={recipe.id}
+            id={recipe.id}
             title={recipe.title}
             image={recipe.image}
             degrees={Math.floor(Math.random() * 11) - 5}
