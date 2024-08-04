@@ -3,11 +3,12 @@ import { NavLink } from "react-router-dom";
 
 const RecipeCard = ({ title, image, degrees, id }) => {
   return (
-    <NavLink to={`/recipes/${id}`}>
-      <div
-        className="recipe"
-        style={{ transform: "rotate(" + degrees + "deg)" }}
-      >
+    <NavLink
+      to={`/recipes/${id}`}
+      className="recipe"
+      style={{ transform: "rotate(" + degrees + "deg)" }}
+    >
+      <div>
         <img src={image} />
         <h2>{title}</h2>
       </div>

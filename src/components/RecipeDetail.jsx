@@ -34,31 +34,48 @@ const RecipeDetail = () => {
               <li key={diet}>{diet}</li>
             ))}
           </ul>
-          <img src={recipe.image} alt={recipe.title} />
-          <p className="image-credit">
-            Image &copy;{" "}
-            <a href={recipe.sourceUrl} target="_blank">
-              {recipe.creditsText}
-            </a>
-          </p>
-          <div
-            className="summary"
-            dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(recipe.summary),
-            }}
-          />
-          <h2>Ingredients</h2>
-          <ul className="ingredients">
-            {recipe.extendedIngredients.map((ingredient) => (
-              <li key={ingredient.id}>{ingredient.original}</li>
-            ))}
-          </ul>
-          <h2>Instructions</h2>
-          <ol className="instructions">
-            {recipe.analyzedInstructions[0].steps.map((step) => (
-              <li key={step.number}>{step.step}</li>
-            ))}
-          </ol>
+          <div className="image-summary">
+            <div className="image-container">
+              <img src={recipe.image} alt={recipe.title} />
+              <p className="image-credit">
+                Image &copy;{" "}
+                <a href={recipe.sourceUrl} target="_blank">
+                  {recipe.creditsText}
+                </a>
+              </p>
+            </div>
+
+            <div
+              className="summary"
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(recipe.summary),
+              }}
+            />
+          </div>
+          <div className="ingredients-instructions">
+            <div className="ingredients-container">
+              <h2 className="ingredients-heading">
+                <span>Ingredients </span>
+                <span className="servings">serves {recipe.servings}</span>
+              </h2>
+              <ul className="ingredients-list">
+                {recipe.extendedIngredients.map((ingredient) => (
+                  <li key={ingredient.id}>{ingredient.original}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="instructions">
+              <h2>
+                <span>Instructions </span>
+                <span className="minutes">{recipe.readyInMinutes} minutes</span>
+              </h2>
+              <ol className="instructions">
+                {recipe.analyzedInstructions[0].steps.map((step) => (
+                  <li key={step.number}>{step.step}</li>
+                ))}
+              </ol>
+            </div>
+          </div>
           <p className="source">
             This recipe sourced from{" "}
             <a href={recipe.sourceUrl} target="_blank">

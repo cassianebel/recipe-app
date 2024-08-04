@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-import "./App.css";
 import RecipeList from "./components/RecipeList";
 import RecipeDetail from "./components/RecipeDetail";
 
