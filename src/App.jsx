@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate, NavLink } from "react-router-dom";
 import RecipeList from "./components/RecipeList";
 import RecipeDetail from "./components/RecipeDetail";
 import FavoritesPage from "./components/FavoritesPage";
@@ -89,13 +89,13 @@ function App() {
   return (
     <>
       <header>
-        <a href="/recipe-app/recipes">
+        <NavLink to="/recipe-app/recipes">
           <i className="fa-solid fa-bowl-food"></i>Recipe Finder
-        </a>
+        </NavLink>
         <div>
-          <a id="favs" href="/recipe-app/favorites">
+          <NavLink id="favs" to="/recipe-app/favorites">
             <i className="fa-solid fa-heart"></i> Favs
-          </a>
+          </NavLink>
           <label className="switch">
             <input type="checkbox" id="dark-mode-toggle" />
             <span className="slider round">
