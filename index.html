@@ -21,13 +21,18 @@
   <body>
     <header>
       <a href="/"> <i class="fa-solid fa-bowl-food"></i>Recipe Finder </a>
-      <label class="switch">
-        <input type="checkbox" id="dark-mode-toggle" />
-        <span class="slider round">
-          <i class="fa-solid fa-sun"></i>
-          <i class="fa-solid fa-moon"></i>
-        </span>
-      </label>
+      <div>
+        <a id="favs" href="/favorites"
+          ><i class="fa-solid fa-heart"></i> Favs</a
+        >
+        <label class="switch">
+          <input type="checkbox" id="dark-mode-toggle" />
+          <span class="slider round">
+            <i class="fa-solid fa-sun"></i>
+            <i class="fa-solid fa-moon"></i>
+          </span>
+        </label>
+      </div>
     </header>
     <div id="root"></div>
 

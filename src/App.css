@@ -19,7 +19,7 @@ header {
   display: flex;
   justify-content: space-between;
   margin-bottom: 40px;
-  background: #333;
+  background: #2d2d2d;
   padding: 20px;
   color: #fff;
 }
@@ -28,6 +28,18 @@ header a {
   font-weight: 600;
   text-decoration: none;
   text-transform: uppercase;
+}
+header div {
+  display: flex;
+  align-items: center;
+}
+h1 {
+  margin: 30px 20px;
+  font-style: normal;
+  line-height: 1.2;
+  font-family: "Shadows Into Light", "Comic Sans MS", Arial, Helvetica,
+    sans-serif;
+  text-align: center;
 }
 main {
   min-height: 90vh;
@@ -40,10 +52,14 @@ img {
   max-width: 100%;
 }
 a {
+  transition: 0.3s;
   color: var(--primary-color);
 }
+a:hover {
+  color: #009a7a;
+}
 footer {
-  background-color: #333;
+  background-color: #2d2d2d;
   padding: 12px;
   color: #fff;
 }
@@ -56,6 +72,9 @@ footer a {
 }
 .fa-bowl-food {
   margin-right: 10px;
+}
+a#favs {
+  margin-right: 40px;
 }
 .switch {
   display: inline-block;
@@ -149,6 +168,7 @@ input:checked + .slider .fa-sun {
   background-color: #fff;
   padding: 10px;
   max-width: 312px;
+  height: fit-content;
 }
 .recipe:hover,
 .recipe:focus,
@@ -158,8 +178,8 @@ input:checked + .slider .fa-sun {
 }
 a:focus,
 a:focus-visible,
-button:focus,
-button:focus-visible {
+button:not(.favorite):focus,
+button:not(.favorite):focus-visible {
   outline: var(--primary-color) solid 2px;
   box-shadow: 0 0 10px var(--secondary-color);
 }
@@ -202,13 +222,23 @@ a:not(.recipe):focus-visible {
   font-size: 0.8rem;
   text-align: center;
 }
-.recipe-page h1 {
-  margin: 20px;
-  font-style: normal;
-  line-height: 1.2;
-  font-family: "Shadows Into Light", "Comic Sans MS", Arial, Helvetica,
-    sans-serif;
-  text-align: center;
+.summary {
+  margin: 0 20px;
+}
+button.favorite {
+  position: relative;
+  top: -5px;
+  cursor: pointer;
+  margin: 0 20px;
+  border: none;
+  background: none;
+  color: var(--primary-color);
+  font-size: 2rem;
+}
+button.favorite:focus,
+button.favorite:focus-visible {
+  outline: none;
+  text-shadow: 0 0 10px var(--secondary-color);
 }
 ul.diets {
   display: flex;
@@ -222,7 +252,7 @@ ul.diets {
 }
 ul.diets li {
   border-radius: 17px;
-  background-color: #737373;
+  background-color: #626262;
   padding: 2px 12px 4px 12px;
   color: #fff;
   font-size: 1rem;
@@ -240,7 +270,7 @@ ul.diets li {
 .recipe-page h2 .servings,
 .recipe-page h2 .minutes {
   border-radius: 15px;
-  background-color: #333;
+  background-color: #3d3d3d;
   padding: 0 13px;
   color: #fff;
   font-size: 1.2rem;
@@ -291,6 +321,9 @@ ul.ingredients-list {
     border-bottom: 1px solid #c1c1c1;
     padding: 0 12px 12px 12px;
   }
+  [data-theme="dark"] ul.ingredients-list li {
+    border-bottom: 1px solid #444;
+  }
   ul.ingredients-list li:last-child {
     border-bottom: none;
   }
@@ -302,4 +335,7 @@ ul.ingredients-list {
 }
 [data-theme="dark"] a {
   color: #009a7a;
+}
+[data-theme="dark"] header a {
+  color: var(--secondary-color);
 }

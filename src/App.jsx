@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import RecipeList from "./components/RecipeList";
 import RecipeDetail from "./components/RecipeDetail";
+import FavoritesPage from "./components/FavoritesPage";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
@@ -68,6 +69,7 @@ function App() {
               />
             }
           />
+          <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/recipes/:id" element={<RecipeDetail />} />
         </Routes>
       </main>
