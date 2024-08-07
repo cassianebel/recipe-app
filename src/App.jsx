@@ -52,8 +52,59 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offset]);
 
+  useEffect(() => {
+    const toggleCheckbox = document.getElementById("dark-mode-toggle");
+    const htmlElement = document.documentElement;
+
+    const prefersDarkScheme = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    ).matches;
+
+    const storedTheme = localStorage.getItem("theme");
+
+    if (storedTheme) {
+      htmlElement.setAttribute("data-theme", storedTheme);
+      toggleCheckbox.checked = storedTheme === "dark";
+    } else if (prefersDarkScheme) {
+      toggleCheckbox.checked = true;
+      htmlElement.setAttribute("data-theme", "dark");
+    } else {
+      toggleCheckbox.checked = false;
+      htmlElement.setAttribute("data-theme", "light");
+    }
+
+    const handleToggleChange = () => {
+      const newTheme = toggleCheckbox.checked ? "dark" : "light";
+      htmlElement.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+    };
+
+    toggleCheckbox.addEventListener("change", handleToggleChange);
+
+    return () => {
+      toggleCheckbox.removeEventListener("change", handleToggleChange);
+    };
+  }, []);
+
   return (
     <>
+      <header>
+        <a href="/recipe-app/recipes">
+          <i className="fa-solid fa-bowl-food"></i>Recipe Finder
+        </a>
+        <div>
+          <a id="favs" href="/recipe-app/favorites">
+            <i className="fa-solid fa-heart"></i> Favs
+          </a>
+          <label className="switch">
+            <input type="checkbox" id="dark-mode-toggle" />
+            <span className="slider round">
+              <i className="fa-solid fa-sun"></i>
+              <i className="fa-solid fa-moon"></i>
+            </span>
+          </label>
+        </div>
+      </header>
       <main>
         <Routes>
           <Route
