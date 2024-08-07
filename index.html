@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/recipe-app/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;500&family=Shadows+Into+Light&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/d3815bb3e0.js"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script type="module" crossorigin src="/recipe-app/assets/index-CPN8NuEc.js"></script>
+    <link rel="stylesheet" crossorigin href="/recipe-app/assets/index--uwfNAfJ.css">
+  </head>
+  <body>
+    <header>
+      <a href="/"> <i class="fa-solid fa-bowl-food"></i>Recipe Finder </a>
+      <div>
+        <a id="favs" href="/recipe-app/favorites"
+          ><i class="fa-solid fa-heart"></i> Favs</a
+        >
+        <label class="switch">
+          <input type="checkbox" id="dark-mode-toggle" />
+          <span class="slider round">
+            <i class="fa-solid fa-sun"></i>
+            <i class="fa-solid fa-moon"></i>
+          </span>
+        </label>
+      </div>
+    </header>
+    <div id="root"></div>
+
+    <footer>
+      <p>
+        Data provided by the
+        <a href="https://spoonacular.com/food-api" target="_blank"
+          >spoonacular API</a
+        >
+      </p>
+    </footer>
+    <script>
+      // Dark mode toggle
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggleCheckbox = document.getElementById("dark-mode-toggle");
+        const htmlElement = document.documentElement;
+
+        // Check if the user's system is set to dark mode
+        const prefersDarkScheme = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+
+        // Retrieve the user's theme preference from local storage
+        const storedTheme = localStorage.getItem("theme");
+
+        if (storedTheme) {
+          htmlElement.setAttribute("data-theme", storedTheme);
+          toggleCheckbox.checked = storedTheme === "dark";
+        } else if (prefersDarkScheme) {
+          toggleCheckbox.checked = true;
+          htmlElement.setAttribute("data-theme", "dark");
+        } else {
+          toggleCheckbox.checked = false;
+          htmlElement.setAttribute("data-theme", "light");
+        }
+
+        toggleCheckbox.addEventListener("change", () => {
+          const newTheme = toggleCheckbox.checked ? "dark" : "light";
+          htmlElement.setAttribute("data-theme", newTheme);
+          // Save the user's theme preference to local storage
+          localStorage.setItem("theme", newTheme);
+        });
+      });
+    </script>
+  </body>
+</html>
