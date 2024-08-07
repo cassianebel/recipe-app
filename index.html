@@ -16,27 +16,10 @@
       crossorigin="anonymous"
       defer
     ></script>
-    <script type="module" crossorigin src="/recipe-app/assets/index-CPN8NuEc.js"></script>
+    <script type="module" crossorigin src="/recipe-app/assets/index-CJQggOhw.js"></script>
     <link rel="stylesheet" crossorigin href="/recipe-app/assets/index--uwfNAfJ.css">
   </head>
   <body>
-    <header>
-      <a href="/recipe-app/recipes">
-        <i class="fa-solid fa-bowl-food"></i>Recipe Finder
-      </a>
-      <div>
-        <a id="favs" href="/recipe-app/favorites"
-          ><i class="fa-solid fa-heart"></i> Favs</a
-        >
-        <label class="switch">
-          <input type="checkbox" id="dark-mode-toggle" />
-          <span class="slider round">
-            <i class="fa-solid fa-sun"></i>
-            <i class="fa-solid fa-moon"></i>
-          </span>
-        </label>
-      </div>
-    </header>
     <div id="root"></div>
 
     <footer>
@@ -47,38 +30,5 @@
         >
       </p>
     </footer>
-    <script>
-      // Dark mode toggle
-      document.addEventListener("DOMContentLoaded", () => {
-        const toggleCheckbox = document.getElementById("dark-mode-toggle");
-        const htmlElement = document.documentElement;
-
-        // Check if the user's system is set to dark mode
-        const prefersDarkScheme = window.matchMedia(
-          "(prefers-color-scheme: dark)"
-        ).matches;
-
-        // Retrieve the user's theme preference from local storage
-        const storedTheme = localStorage.getItem("theme");
-
-        if (storedTheme) {
-          htmlElement.setAttribute("data-theme", storedTheme);
-          toggleCheckbox.checked = storedTheme === "dark";
-        } else if (prefersDarkScheme) {
-          toggleCheckbox.checked = true;
-          htmlElement.setAttribute("data-theme", "dark");
-        } else {
-          toggleCheckbox.checked = false;
-          htmlElement.setAttribute("data-theme", "light");
-        }
-
-        toggleCheckbox.addEventListener("change", () => {
-          const newTheme = toggleCheckbox.checked ? "dark" : "light";
-          htmlElement.setAttribute("data-theme", newTheme);
-          // Save the user's theme preference to local storage
-          localStorage.setItem("theme", newTheme);
-        });
-      });
-    </script>
   </body>
 </html>
