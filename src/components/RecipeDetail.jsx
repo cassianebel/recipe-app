@@ -69,7 +69,7 @@ const RecipeDetail = () => {
           <div className="ingredients-instructions">
             <div className="ingredients-container">
               <h2>Ingredients</h2>
-              <ul>
+              <ul className="ingredients-list">
                 {recipe.extendedIngredients.map((ingredient) => (
                   <li key={ingredient.id}>{ingredient.original}</li>
                 ))}
