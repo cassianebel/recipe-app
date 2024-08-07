@@ -56,9 +56,12 @@ function App() {
     <>
       <main>
         <Routes>
-          <Route path="/" element={<Navigate to="/recipes" />} />
           <Route
-            path="/recipes"
+            path="/recipe-app/"
+            element={<Navigate to="/recipe-app/recipes" />}
+          />
+          <Route
+            path="/recipe-app/recipes"
             element={
               <RecipeList
                 recipes={recipes}
@@ -69,8 +72,8 @@ function App() {
               />
             }
           />
-          <Route path="/favorites" element={<FavoritesPage />} />
-          <Route path="/recipes/:id" element={<RecipeDetail />} />
+          <Route path="/recipe-app/favorites" element={<FavoritesPage />} />
+          <Route path="/recipe-app/recipes/:id" element={<RecipeDetail />} />
         </Routes>
       </main>
     </>
