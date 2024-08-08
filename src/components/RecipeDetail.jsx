@@ -86,7 +86,9 @@ const RecipeDetail = () => {
           </div>
         </div>
       ) : (
-        <p>Loading...</p>
+        <div className="recipe-page">
+          <div className="loader"></div>
+        </div>
       )}
     </>
   );
