@@ -30,6 +30,7 @@ const RecipeCard = ({ title, image, degrees, id }) => {
 
   return (
     <NavLink
+      id={id}
       to={`/recipe-app/recipes/${id}`}
       className="recipe"
       style={{ transform: "rotate(" + degrees + "deg)" }}

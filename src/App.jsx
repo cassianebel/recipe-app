@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Route, Routes, Navigate, NavLink } from "react-router-dom";
 import RecipeList from "./components/RecipeList";
 import RecipeDetail from "./components/RecipeDetail";
@@ -9,6 +9,7 @@ function App() {
   const [offset, setOffset] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const firstNewRecipeRef = useRef(null);
   const apiKey = import.meta.env.VITE_API_KEY;
 
   const fetchRecipes = async (offset) => {
@@ -27,6 +28,9 @@ function App() {
             (newRecipe) =>
               !prevRecipes.some((prevRecipe) => prevRecipe.id === newRecipe.id),
           );
+          if (newRecipes.length > 0) {
+            firstNewRecipeRef.current = newRecipes[0].id;
+          }
           return [...prevRecipes, ...newRecipes];
         });
       } else {
@@ -51,6 +55,15 @@ function App() {
     fetchRecipes(offset);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offset]);
+
+  useEffect(() => {
+    if (firstNewRecipeRef.current) {
+      const element = document.getElementById(firstNewRecipeRef.current);
+      if (element) {
+        element.focus();
+      }
+    }
+  }, [recipes]);
 
   useEffect(() => {
     const toggleCheckbox = document.getElementById("dark-mode-toggle");
