@@ -27,6 +27,7 @@ const RecipeDetail = () => {
 
   useEffect(() => {
     fetchRecipe(id);
+    window.scrollTo(0, 0);
   }, [id]);
 
   const handleFavoriteClick = (event) => {
