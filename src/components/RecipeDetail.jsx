@@ -85,6 +85,10 @@ const RecipeDetail = () => {
               </ol>
             </div>
           </div>
+          <p className="source">
+            This recipe sourced from{" "}
+            <a href={recipe.sourceUrl}>{recipe.sourceName}</a>
+          </p>
         </div>
       ) : (
         <div className="recipe-page">

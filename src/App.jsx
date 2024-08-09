@@ -99,14 +99,26 @@ function App() {
     };
   }, []);
 
+  const handleOpenNav = () => {
+    document.getElementById("nav").classList.add("open");
+  };
+
+  const handleCloseNav = () => {
+    document.getElementById("nav").classList.remove("open");
+  };
+
   return (
     <>
       <header>
         <NavLink to="/recipe-app/recipes">
           <i className="fa-solid fa-bowl-food"></i>Recipe Finder
         </NavLink>
-        <div>
-          <NavLink id="favs" to="/recipe-app/favorites">
+        <div id="nav">
+          <NavLink
+            id="favs"
+            to="/recipe-app/favorites"
+            onClick={() => handleCloseNav()}
+          >
             <i className="fa-solid fa-heart"></i> Favs
           </NavLink>
           <label className="switch">
@@ -116,7 +128,13 @@ function App() {
               <i className="fa-solid fa-moon"></i>
             </span>
           </label>
+          <button id="close-nav" onClick={() => handleCloseNav()}>
+            <i className="fa-solid fa-square-xmark"></i>
+          </button>
         </div>
+        <button id="nav-btn" onClick={() => handleOpenNav()}>
+          <i className="fa-solid fa-burger"></i>
+        </button>
       </header>
       <main>
         <Routes>

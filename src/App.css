@@ -3,7 +3,6 @@
   --primary-dark: #006852;
   --secondary-color: #00dcae;
 }
-
 body {
   margin: 0;
   background-color: #f1f1f1;
@@ -15,6 +14,7 @@ body {
   line-height: 1.6;
   font-family: "Barlow Condensed", Arial, Helvetica, sans-serif;
 }
+/** Header **/
 header {
   display: flex;
   justify-content: space-between;
@@ -29,49 +29,12 @@ header a {
   text-decoration: none;
   text-transform: uppercase;
 }
-header div {
-  display: flex;
-  align-items: center;
-}
-h1 {
-  margin: 30px 20px;
-  font-style: normal;
-  line-height: 1.2;
-  font-family: "Shadows Into Light", "Comic Sans MS", Arial, Helvetica,
-    sans-serif;
-  text-align: center;
-}
-main {
-  min-height: 90vh;
-}
-b {
-  font-weight: 500;
-}
-img {
-  border-radius: 4px;
-  max-width: 100%;
-}
-a {
-  transition: 0.3s;
-  color: var(--primary-color);
-}
-a:hover {
-  color: #009a7a;
-}
-footer {
-  background-color: #2d2d2d;
-  padding: 12px;
-  color: #fff;
-}
-footer p {
-  font-size: 0.9rem;
-  text-align: center;
-}
-footer a {
-  color: var(--secondary-color);
-}
 .fa-bowl-food {
   margin-right: 10px;
+}
+#nav {
+  display: flex;
+  align-items: center;
 }
 a#favs {
   margin-right: 40px;
@@ -138,6 +101,72 @@ input:checked + .slider:before {
 input:checked + .slider .fa-sun {
   opacity: 1;
 }
+header button {
+  border: none;
+  background-color: unset;
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+}
+header button:focus,
+header button:focus-visible {
+  outline: none;
+  box-shadow: none;
+  text-shadow: 0 0 10px var(--secondary-color);
+}
+
+/** Main **/
+h1 {
+  margin: 30px 20px;
+  font-style: normal;
+  line-height: 1.2;
+  font-family: "Shadows Into Light", "Comic Sans MS", Arial, Helvetica,
+    sans-serif;
+  text-align: center;
+}
+main {
+  min-height: 90vh;
+}
+b {
+  font-weight: 500;
+}
+img {
+  border-radius: 4px;
+  max-width: 100%;
+}
+a {
+  transition: 0.3s;
+  color: var(--primary-color);
+}
+a:hover {
+  color: #009a7a;
+}
+a:focus,
+a:focus-visible,
+button.load-more:focus,
+button.load-more:focus-visible {
+  outline: var(--primary-color) solid 2px;
+  box-shadow: 0 0 10px var(--secondary-color);
+}
+a:not(.recipe):focus,
+a:not(.recipe):focus-visible {
+  border-radius: 3px;
+  text-decoration: none;
+}
+button.favorite {
+  position: relative;
+  top: -5px;
+  cursor: pointer;
+  margin: 0 20px;
+  border: none;
+  background: none;
+  color: var(--primary-color);
+  font-size: 2rem;
+}
+button.favorite:focus,
+button.favorite:focus-visible {
+  outline: none;
+  text-shadow: 0 0 10px var(--secondary-color);
+}
 .loader {
   animation: loading 0.8s ease infinite;
   margin: 0 auto;
@@ -159,14 +188,8 @@ input:checked + .slider .fa-sun {
   margin: 20px;
   text-align: center;
 }
-.recipe h2 {
-  margin: 15px;
-  font-style: normal;
-  line-height: 1.2;
-  font-family: "Shadows Into Light", "Comic Sans MS", Arial, Helvetica,
-    sans-serif;
-  text-align: center;
-}
+
+/** Recipe List **/
 #recipes {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(312px, 1fr));
@@ -176,6 +199,14 @@ input:checked + .slider .fa-sun {
 #recipes a {
   color: #000;
   text-decoration: none;
+}
+.recipe h2 {
+  margin: 15px;
+  font-style: normal;
+  line-height: 1.2;
+  font-family: "Shadows Into Light", "Comic Sans MS", Arial, Helvetica,
+    sans-serif;
+  text-align: center;
 }
 .recipe {
   transition: 0.3s;
@@ -192,18 +223,6 @@ input:checked + .slider .fa-sun {
 .recipe:active,
 .recipe:focus-visible {
   transform: rotate(0deg) !important;
-}
-a:focus,
-a:focus-visible,
-button:not(.favorite):focus,
-button:not(.favorite):focus-visible {
-  outline: var(--primary-color) solid 2px;
-  box-shadow: 0 0 10px var(--secondary-color);
-}
-a:not(.recipe):focus,
-a:not(.recipe):focus-visible {
-  border-radius: 3px;
-  text-decoration: none;
 }
 .load-more {
   display: block;
@@ -222,6 +241,8 @@ a:not(.recipe):focus-visible {
 .load-more:hover {
   background-color: var(--primary-dark);
 }
+
+/** Recipe Details Page **/
 .recipe-page {
   margin: 0 auto;
   max-width: 1366px;
@@ -239,40 +260,8 @@ a:not(.recipe):focus-visible {
   font-size: 0.8rem;
   text-align: center;
 }
-.summary {
-  margin: 0 20px;
-}
-button.favorite {
-  position: relative;
-  top: -5px;
-  cursor: pointer;
-  margin: 0 20px;
-  border: none;
-  background: none;
-  color: var(--primary-color);
-  font-size: 2rem;
-}
-button.favorite:focus,
-button.favorite:focus-visible {
-  outline: none;
-  text-shadow: 0 0 10px var(--secondary-color);
-}
-ul.diets {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin: 0;
-  margin: 20px 10px;
-  padding: 0;
-  list-style-type: none;
-}
-ul.diets li {
-  border-radius: 17px;
-  background-color: #626262;
-  padding: 2px 12px 4px 12px;
-  color: #fff;
-  font-size: 1rem;
+.recipe-page .summary {
+  margin: 20px;
 }
 .recipe-page h2 {
   display: flex;
@@ -292,8 +281,22 @@ ul.diets li {
   color: #fff;
   font-size: 1.2rem;
 }
-.recipe-page .summary {
-  margin: 20px;
+ul.diets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+  margin: 20px 10px;
+  padding: 0;
+  list-style-type: none;
+}
+ul.diets li {
+  border-radius: 17px;
+  background-color: #626262;
+  padding: 2px 12px 4px 12px;
+  color: #fff;
+  font-size: 1rem;
 }
 ul.ingredients-list,
 ol.instructions {
@@ -315,6 +318,46 @@ ul.ingredients-list {
   text-align: center;
 }
 
+/** Footer **/
+footer {
+  background-color: #2d2d2d;
+  padding: 12px;
+  color: #fff;
+}
+footer p {
+  font-size: 0.9rem;
+  text-align: center;
+}
+footer a {
+  color: var(--secondary-color);
+}
+
+/** Media Queries **/
+@media (max-width: 768px) {
+  #nav {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 40px;
+    z-index: 2;
+    transition: 0.5s;
+    margin-right: -220px;
+    background-color: #000;
+    padding: 24px;
+    width: 160px;
+  }
+  #nav.open {
+    margin-right: 0;
+  }
+}
+@media (min-width: 769px) {
+  header button {
+    display: none;
+  }
+}
 @media (min-width: 1024px) {
   .image-container {
     float: left;
@@ -346,6 +389,7 @@ ul.ingredients-list {
   }
 }
 
+/** Dark Mode **/
 [data-theme="dark"] body {
   background-color: #202020;
   color: #f2f2f2;
