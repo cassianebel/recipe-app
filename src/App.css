@@ -347,10 +347,11 @@ footer a {
     margin-right: -220px;
     background-color: #000;
     padding: 24px;
-    width: 160px;
+    width: 0px;
   }
   #nav.open {
     margin-right: 0;
+    width: 160px;
   }
 }
 @media (min-width: 769px) {
