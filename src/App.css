@@ -1,13 +1,32 @@
 :root {
-  --primary-color: #007c62;
-  --primary-dark: #006852;
-  --secondary-color: #00dcae;
+  --spring-green-50: #eefff8;
+  --spring-green-100: #d7fff1;
+  --spring-green-200: #b1ffe4;
+  --spring-green-300: #75ffd0;
+  --spring-green-400: #32f6b3;
+  --spring-green-500: #08f0a2;
+  --spring-green-600: #00ba7b;
+  --spring-green-700: #049163;
+  --spring-green-800: #097250;
+  --spring-green-900: #0a5d44;
+  --spring-green-950: #003525;
+  --shark-50: #f5f6f6;
+  --shark-100: #e4e6e9;
+  --shark-200: #cdd1d4;
+  --shark-300: #aab0b6;
+  --shark-400: #7f8891;
+  --shark-500: #646c76;
+  --shark-600: #555c65;
+  --shark-700: #494d55;
+  --shark-800: #414449;
+  --shark-900: #393b40;
+  --shark-950: #282a2e;
 }
 body {
   margin: 0;
-  background-color: #f1f1f1;
+  background-color: var(--shark-50);
   padding: 0;
-  color: #333;
+  color: var(--shark-800);
   font-style: normal;
   font-weight: 300;
   font-size: 1.5rem;
@@ -19,12 +38,12 @@ header {
   display: flex;
   justify-content: space-between;
   margin-bottom: 40px;
-  background: #2d2d2d;
+  background: var(--shark-900);
   padding: 20px;
-  color: #fff;
+  color: var(--shark-50);
 }
 header a {
-  color: var(--secondary-color);
+  color: var(--spring-green-500);
   font-weight: 600;
   text-decoration: none;
   text-transform: uppercase;
@@ -57,18 +76,18 @@ a#favs {
   bottom: 0;
   left: 0;
   cursor: pointer;
-  border: 2px solid #606060;
-  background-color: #606060;
+  border: 2px solid var(--shark-600);
+  background-color: var(--shark-600);
 }
 .switch input:focus + .slider {
-  border: 2px solid var(--secondary-color);
+  border: 2px solid var(--spring-green-600);
 }
 .slider:before {
   position: absolute;
   bottom: 2px;
   left: 4px;
   transition: 0.4s;
-  background-color: white;
+  background-color: var(--shark-50);
   width: 26px;
   height: 26px;
   content: "";
@@ -104,14 +123,14 @@ input:checked + .slider .fa-sun {
 header button {
   border: none;
   background-color: unset;
-  color: var(--secondary-color);
+  color: var(--spring-green-500);
   font-size: 1.5rem;
 }
 header button:focus,
 header button:focus-visible {
   outline: none;
   box-shadow: none;
-  text-shadow: 0 0 10px var(--secondary-color);
+  text-shadow: 0 0 10px var(--spring-green-600);
 }
 
 /** Main **/
@@ -135,17 +154,17 @@ img {
 }
 a {
   transition: 0.3s;
-  color: var(--primary-color);
+  color: var(--spring-green-700);
 }
 a:hover {
-  color: #009a7a;
+  color: var(--spring-green-600);
 }
 a:focus,
 a:focus-visible,
 button.load-more:focus,
 button.load-more:focus-visible {
-  outline: var(--primary-color) solid 2px;
-  box-shadow: 0 0 10px var(--secondary-color);
+  outline: var(--spring-green-600) solid 2px;
+  box-shadow: 0 0 10px var(--spring-green-500);
 }
 a:not(.recipe):focus,
 a:not(.recipe):focus-visible {
@@ -159,19 +178,19 @@ button.favorite {
   margin: 0 20px;
   border: none;
   background: none;
-  color: var(--primary-color);
+  color: var(--spring-green-700);
   font-size: 2rem;
 }
 button.favorite:focus,
 button.favorite:focus-visible {
   outline: none;
-  text-shadow: 0 0 10px var(--secondary-color);
+  text-shadow: 0 0 10px var(--spring-green-500);
 }
 .loader {
   animation: loading 0.8s ease infinite;
   margin: 0 auto;
   border: 2px solid transparent;
-  border-top: 2px solid var(--primary-color);
+  border-top: 2px solid var(--spring-green-700);
   border-radius: 100%;
   width: 30px;
   height: 30px;
@@ -197,7 +216,7 @@ button.favorite:focus-visible {
   max-width: 1800px;
 }
 #recipes a {
-  color: #000;
+  color: var(--shark-950);
   text-decoration: none;
 }
 .recipe h2 {
@@ -211,7 +230,7 @@ button.favorite:focus-visible {
 .recipe {
   transition: 0.3s;
   margin: 20px auto;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   background-color: #fff;
   padding: 10px;
@@ -231,7 +250,7 @@ button.favorite:focus-visible {
   margin: 40px auto;
   border: none;
   border-radius: 5px;
-  background-color: var(--primary-color);
+  background-color: var(--spring-green-800);
   padding: 10px 20px;
   color: #fff;
   font-weight: bold;
@@ -239,7 +258,7 @@ button.favorite:focus-visible {
   text-align: center;
 }
 .load-more:hover {
-  background-color: var(--primary-dark);
+  background-color: var(--spring-green-700);
 }
 
 /** Recipe Details Page **/
@@ -276,9 +295,9 @@ button.favorite:focus-visible {
 .recipe-page h2 .servings,
 .recipe-page h2 .minutes {
   border-radius: 15px;
-  background-color: #3d3d3d;
+  background-color: var(--shark-700);
   padding: 0 13px;
-  color: #fff;
+  color: var(--shark-50);
   font-size: 1.2rem;
 }
 ul.diets {
@@ -293,9 +312,9 @@ ul.diets {
 }
 ul.diets li {
   border-radius: 17px;
-  background-color: #626262;
+  background-color: var(--shark-700);
   padding: 2px 12px 4px 12px;
-  color: #fff;
+  color: var(--shark-50);
   font-size: 1rem;
 }
 ul.ingredients-list,
@@ -320,16 +339,16 @@ ul.ingredients-list {
 
 /** Footer **/
 footer {
-  background-color: #2d2d2d;
+  background-color: var(--shark-900);
   padding: 12px;
-  color: #fff;
+  color: var(--shark-50);
 }
 footer p {
   font-size: 0.9rem;
   text-align: center;
 }
 footer a {
-  color: var(--secondary-color);
+  color: var(--spring-green-500);
 }
 
 /** Media Queries **/
@@ -381,11 +400,8 @@ footer a {
     margin: 0 0 0 20px;
   }
   ul.ingredients-list li {
-    border-bottom: 1px solid #c1c1c1;
+    border-bottom: 1px solid var(--shark-500);
     padding: 0 12px 12px 12px;
-  }
-  [data-theme="dark"] ul.ingredients-list li {
-    border-bottom: 1px solid #444;
   }
   ul.ingredients-list li:last-child {
     border-bottom: none;
@@ -394,12 +410,9 @@ footer a {
 
 /** Dark Mode **/
 [data-theme="dark"] body {
-  background-color: #202020;
-  color: #f2f2f2;
+  background-color: var(--shark-950);
+  color: var(--shark-100);
 }
 [data-theme="dark"] a {
-  color: #009a7a;
-}
-[data-theme="dark"] header a {
-  color: var(--secondary-color);
+  color: var(--spring-green-500);
 }
