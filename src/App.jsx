@@ -109,12 +109,16 @@ function App() {
 
   return (
     <>
+      <a href="#main" id="skip-link">
+        Skip to main content
+      </a>
       <header>
         <NavLink to="/recipe-app/recipes">
           <i className="fa-solid fa-bowl-food"></i>Recipe Finder
         </NavLink>
         <div id="nav">
           <NavLink
+            aria-label="favorites"
             id="favs"
             to="/recipe-app/favorites"
             onClick={() => handleCloseNav()}
@@ -122,7 +126,11 @@ function App() {
             <i className="fa-solid fa-heart"></i> Favs
           </NavLink>
           <label className="switch">
-            <input type="checkbox" id="dark-mode-toggle" />
+            <input
+              type="checkbox"
+              id="dark-mode-toggle"
+              aria-label="toggle dark and light mode"
+            />
             <span className="slider round">
               <i className="fa-solid fa-sun"></i>
               <i className="fa-solid fa-moon"></i>
@@ -136,7 +144,7 @@ function App() {
           <i className="fa-solid fa-burger"></i>
         </button>
       </header>
-      <main>
+      <main id="main">
         <Routes>
           <Route
             path="/recipe-app/"

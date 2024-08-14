@@ -2,7 +2,11 @@ import PropTypes from "prop-types";
 
 const FavoriteButton = ({ isFavorite, handleFavorite }) => {
   return (
-    <button className="favorite" onClick={handleFavorite}>
+    <button
+      aria-label="favorite this recipe"
+      className="favorite"
+      onClick={handleFavorite}
+    >
       {isFavorite ? (
         <i className="fa-solid fa-heart"></i>
       ) : (

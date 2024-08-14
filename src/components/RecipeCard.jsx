@@ -36,7 +36,7 @@ const RecipeCard = ({ title, image, degrees, id }) => {
       style={{ transform: "rotate(" + degrees + "deg)" }}
     >
       <div>
-        <img src={image} />
+        <img src={image} alt="" />
         <h2>
           {title}
           <FavoriteButton
