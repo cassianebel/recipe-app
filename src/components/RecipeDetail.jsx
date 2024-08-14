@@ -57,6 +57,11 @@ const RecipeDetail = () => {
               handleFavorite={handleFavoriteClick}
             />
           </h1>
+          <ul className="diets" aria-label="follows these diet restrictions">
+            {recipe.diets.map((diet) => (
+              <li key={diet}>{diet}</li>
+            ))}
+          </ul>
           <div className="image-container">
             <img src={recipe.image} alt={recipe.title} />
             <p className="image-credit">image &copy; {recipe.creditsText}</p>
@@ -69,7 +74,10 @@ const RecipeDetail = () => {
           />
           <div className="ingredients-instructions">
             <div className="ingredients-container">
-              <h2>Ingredients</h2>
+              <h2 className="ingredients-heading">
+                <span>Ingredients </span>
+                <span className="servings">serves {recipe.servings}</span>
+              </h2>
               <ul className="ingredients-list">
                 {recipe.extendedIngredients.map((ingredient) => (
                   <li key={ingredient.id}>{ingredient.original}</li>
@@ -77,7 +85,10 @@ const RecipeDetail = () => {
               </ul>
             </div>
             <div className="instructions-container">
-              <h2>Instructions</h2>
+              <h2>
+                <span>Instructions </span>
+                <span className="minutes">{recipe.readyInMinutes} minutes</span>
+              </h2>
               <ol>
                 {recipe.analyzedInstructions[0].steps.map((step) => (
                   <li key={step.number}>{step.step}</li>
